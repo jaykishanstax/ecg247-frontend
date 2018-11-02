@@ -22,7 +22,7 @@ const TextField = styled.input`
   background: white;
   margin: 10px 0;
   padding: 10px;
-  width: 50%;
+  width: 90%;
   border-radius: 5px;
 `;
 

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 /*
  *
  * RegisterPage
@@ -9,6 +10,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import Helmet from 'react-helmet';
+import Image from 'react-bootstrap/lib/Image';
 import { createStructuredSelector } from 'reselect';
 
 import injectReducer from 'utils/injectReducer';
@@ -36,49 +38,56 @@ export class RegisterPage extends React.PureComponent {
   // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div
-        style={{
-          margin: '20px calc(100vh - 50px) auto',
-          border: '1px solid lightgray',
-          padding: '50px',
-          borderRadius: '5px',
-          background: 'white',
-        }}
-      >
-        <Helmet
-          title="RegisterPage"
-          meta={[
-            { name: 'description', content: 'Description of RegisterPage' },
-          ]}
-        />
-        <RegisterForm
-          onChangeFullName={event =>
-            this.props.dispatch(updateFullName(event.target.value))
-          }
-          onChangeEmail={event =>
-            this.props.dispatch(updateEmail(event.target.value))
-          }
-          onChangePassword={event =>
-            this.props.dispatch(updatePassword(event.target.value))
-          }
-          onChangeMobileNumberPrimary={event =>
-            this.props.dispatch(updateMobileNumber(event.target.value))
-          }
-          onChangeLicenceNo={event =>
-            this.props.dispatch(updateLicenceNo(event.target.value))
-          }
-          onSubmit={event => {
-            event.preventDefault();
-            this.props.dispatch(registerRequest());
+      <div>
+        <Image src="http://hpservicecenterschennai.in/images/hp-printer-service-centers-chennai.JPG" />
+        <div
+          style={{
+            border: '1px solid lightgray',
+            padding: '100px 0px',
+            background: 'white',
+            height: 'calc(100vh - 56px)',
+            width: '500px',
+            float: 'right',
+            position: 'absolute',
+            right: '0px',
+            top: '56px',
           }}
-          fullName={this.props.fullName}
-          email={this.props.email}
-          password={this.props.password}
-          mobileNumberPrimary={this.props.mobileNumberPrimary}
-          licenceNo={this.props.licenceNo}
-          error={this.props.registerError}
-          title="Register"
-        />
+        >
+          <Helmet
+            title="RegisterPage"
+            meta={[
+              { name: 'description', content: 'Description of RegisterPage' },
+            ]}
+          />
+          <RegisterForm
+            onChangeFullName={event =>
+              this.props.dispatch(updateFullName(event.target.value))
+            }
+            onChangeEmail={event =>
+              this.props.dispatch(updateEmail(event.target.value))
+            }
+            onChangePassword={event =>
+              this.props.dispatch(updatePassword(event.target.value))
+            }
+            onChangeMobileNumberPrimary={event =>
+              this.props.dispatch(updateMobileNumber(event.target.value))
+            }
+            onChangeLicenceNo={event =>
+              this.props.dispatch(updateLicenceNo(event.target.value))
+            }
+            onSubmit={event => {
+              event.preventDefault();
+              this.props.dispatch(registerRequest());
+            }}
+            fullName={this.props.fullName}
+            email={this.props.email}
+            password={this.props.password}
+            mobileNumberPrimary={this.props.mobileNumberPrimary}
+            licenceNo={this.props.licenceNo}
+            error={this.props.registerError}
+            title="Register"
+          />
+        </div>
       </div>
     );
   }

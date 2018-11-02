@@ -6,6 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Button } from 'react-bootstrap';
 import styled from 'styled-components';
 import MinimalButton from '../MinimalButton/index';
 
@@ -22,7 +23,7 @@ const TextField = styled.input`
   margin: 10px 0;
   background: white;
   padding: 10px;
-  width: 50%;
+  width: 90%;
   border-radius: 5px;
 `;
 
@@ -58,7 +59,13 @@ function MinimalForm({
         onChange={onChangePassword}
         required
       />
-      <MinimalButton type="submit" value="Submit" onMouseDown={onSubmit} />
+      <Button
+        onClick={onSubmit}
+        className="btn btn-primary"
+        style={{ width: '50%' }}
+      >
+        Log In
+      </Button>
       {error && <Error>{error}</Error>}
     </Form>
   );

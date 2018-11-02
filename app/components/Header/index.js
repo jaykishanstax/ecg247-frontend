@@ -12,7 +12,6 @@ import {
   NavLink,
   DropdownItem,
 } from 'reactstrap';
-import { Link } from 'react-router-dom';
 export default class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -44,17 +43,6 @@ export default class Header extends React.Component {
               <NavItem>
                 <NavLink href="/register">Sign Up</NavLink>
               </NavItem>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Options
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>Option 1</DropdownItem>
-                  <DropdownItem>Option 2</DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>Reset</DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
             </Nav>
           </Collapse>
         </Navbar>
