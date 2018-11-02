@@ -6,10 +6,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'react-bootstrap';
+import { Button, Input } from 'reactstrap';
 import styled from 'styled-components';
 
-const Form = styled.form`
+const FormN = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,27 +26,30 @@ const TextField = styled.input`
   border-radius: 5px;
 `;
 
-const Error = styled.h4`
+const Error = styled.h6`
   color: #cc0000;
+  margin-top: 10px;
 `;
 
-function MinimalForm({
+function RegisterForm({
   onChangeFullName,
   onChangeEmail,
   onChangePassword,
   onChangeMobileNumberPrimary,
   onChangeLicenceNo,
+  onChangeUserRole,
   onSubmit,
   fullName,
   email,
   password,
   mobileNumberPrimary,
   licenceNo,
+  userRole,
   title,
   error,
 }) {
   return (
-    <Form onSubmit={onSubmit}>
+    <FormN onSubmit={onSubmit}>
       {title && <h1>{title}</h1>}
       <TextField
         type="text"
@@ -88,32 +91,50 @@ function MinimalForm({
         onChange={onChangeLicenceNo}
         required
       />
+      <Input
+        type="select"
+        name="select"
+        onChange={onChangeUserRole}
+        value={userRole}
+        style={{
+          width: '90%',
+          margin: '5px',
+          height: '46px',
+          color: 'gray',
+          borderColor: '#eee',
+        }}
+      >
+        <option value="USER">Customer</option>
+        <option value="OWNER">Garrage Owner</option>
+      </Input>
       <Button
         onClick={onSubmit}
         className="btn btn-primary"
-        style={{ width: '50%' }}
+        style={{ width: '50%', marginTop: '10px' }}
       >
         Register
       </Button>
       {error && <Error>{error}</Error>}
-    </Form>
+    </FormN>
   );
 }
 
-MinimalForm.propTypes = {
+RegisterForm.propTypes = {
   onChangeFullName: PropTypes.func.isRequired,
   onChangeEmail: PropTypes.func.isRequired,
   onChangePassword: PropTypes.func.isRequired,
   onChangeMobileNumberPrimary: PropTypes.func.isRequired,
   onChangeLicenceNo: PropTypes.func.isRequired,
+  onChangeUserRole: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   fullName: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   mobileNumberPrimary: PropTypes.string.isRequired,
   licenceNo: PropTypes.string.isRequired,
+  userRole: PropTypes.string.isRequired,
   title: PropTypes.string,
   error: PropTypes.string,
 };
 
-export default MinimalForm;
+export default RegisterForm;

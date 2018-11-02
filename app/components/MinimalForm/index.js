@@ -26,8 +26,9 @@ const TextField = styled.input`
   border-radius: 5px;
 `;
 
-const Error = styled.h4`
+const Error = styled.h6`
   color: #cc0000;
+  margin-top: 10px;
 `;
 
 function MinimalForm({

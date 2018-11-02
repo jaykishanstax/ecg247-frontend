@@ -11,6 +11,7 @@ import {
   UPDATE_EMAIL,
   UPDATE_MOBILENUMBER,
   UPDATE_LICENCENUMBER,
+  UPDATE_USERROLE,
 } from './constants';
 
 export const initialState = fromJS({
@@ -19,6 +20,7 @@ export const initialState = fromJS({
   password: '',
   mobileNumberPrimary: '',
   licenceNo: '',
+  userRole: 'USER',
 });
 
 function registerPageReducer(state = initialState, action) {
@@ -33,6 +35,8 @@ function registerPageReducer(state = initialState, action) {
       return state.set('mobileNumberPrimary', action.mobileNumberPrimary);
     case UPDATE_LICENCENUMBER:
       return state.set('licenceNo', action.licenceNo);
+    case UPDATE_USERROLE:
+      return state.set('userRole', action.userRole);
     default:
       return state;
   }

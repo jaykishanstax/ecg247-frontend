@@ -23,12 +23,15 @@ export class LoginPage extends React.PureComponent {
   render() {
     return (
       <div>
-        <Image src="http://hpservicecenterschennai.in/images/hp-printer-service-centers-chennai.JPG" />
+        <Image
+          src="http://hpservicecenterschennai.in/images/hp-printer-service-centers-chennai.JPG"
+          style={{ height: 'calc(100vh - 56px)' }}
+        />
         <div
           style={{
-            border: '1px solid lightgray',
+            borderLeft: '1px solid lightgray',
             padding: '150px 50px',
-            background: 'white',
+            background: '#F7F7F7',
             width: '500px',
             position: 'absolute',
             right: '0',
@@ -38,7 +41,9 @@ export class LoginPage extends React.PureComponent {
         >
           <Helmet
             title="LoginPage"
-            meta={[{ name: 'description', content: 'Description of LoginPage' }]}
+            meta={[
+              { name: 'description', content: 'Description of LoginPage' },
+            ]}
           />
           <MinimalForm
             onChangeUsername={event =>
@@ -59,7 +64,12 @@ export class LoginPage extends React.PureComponent {
             username={this.props.username}
             password={this.props.password}
             title="Login"
-            error={this.props.loginError}
+            error={
+              this.props.loginError ||
+              (this.props.location.state
+                ? this.props.location.state.message
+                : null)
+            }
           />
         </div>
       </div>
@@ -72,6 +82,7 @@ LoginPage.propTypes = {
   username: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   loginError: PropTypes.string.isRequired,
+  location: PropTypes.any,
 };
 
 const mapStateToProps = createStructuredSelector({
