@@ -8,7 +8,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import styled from 'styled-components';
-import MinimalButton from '../MinimalButton/index';
 
 const Form = styled.form`
   display: flex;
