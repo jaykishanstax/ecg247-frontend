@@ -16,13 +16,20 @@ import {
   makeSelectPassword,
   makeLoginError,
 } from './selectors';
-import { loginRequest, changeUsername, changePassword } from '../App/actions';
 
 export class LoginPage extends React.PureComponent {
   // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div>
+      <div
+        style={{
+          margin: '20px calc(100vh - 50px) auto',
+          border: '1px solid lightgray',
+          padding: '50px',
+          borderRadius: '5px',
+          background: 'white',
+        }}
+      >
         <Helmet
           title="LoginPage"
           meta={[{ name: 'description', content: 'Description of LoginPage' }]}
