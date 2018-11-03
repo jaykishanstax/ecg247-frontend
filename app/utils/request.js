@@ -11,7 +11,7 @@ import { config } from '../config';
 function checkStatus(response) {
   // toggleLoader(false);
   if (response.status >= 200 && response.status < 300) {
-    if (response.text === '') {
+    if (response.text !== '') {
       return response.text;
     }
     if (response.headers['content-type'].search('text/html') > -1) {

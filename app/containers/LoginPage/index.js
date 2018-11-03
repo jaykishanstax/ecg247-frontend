@@ -7,9 +7,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import Helmet from 'react-helmet';
 import Image from 'react-bootstrap/lib/Image';
 import { createStructuredSelector } from 'reselect';
+
+import injectReducer from 'utils/injectReducer';
+import injectSaga from 'utils/injectSaga';
 
 import MinimalForm from '../../components/MinimalForm/index';
 import {
@@ -19,6 +23,9 @@ import {
 } from './selectors';
 
 import { changeUsername, changePassword, loginRequest } from './actions';
+
+import reducer from './reducer';
+import saga from './saga';
 
 export class LoginPage extends React.PureComponent {
   // eslint-disable-line react/prefer-stateless-function
@@ -81,8 +88,8 @@ export class LoginPage extends React.PureComponent {
 
 LoginPage.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  username: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
+  username: PropTypes.string,
+  password: PropTypes.string,
   loginError: PropTypes.string.isRequired,
   location: PropTypes.any,
 };
@@ -99,7 +106,16 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(
+const withConnect = connect(
   mapStateToProps,
   mapDispatchToProps,
+);
+
+const withReducer = injectReducer({ key: 'login', reducer });
+const withSaga = injectSaga({ key: 'login', saga });
+
+export default compose(
+  withReducer,
+  withSaga,
+  withConnect,
 )(LoginPage);

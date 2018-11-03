@@ -8,7 +8,6 @@ import {
   USER_NAME,
   USER_PASSWORD,
   LOGIN_REQUEST,
-  UPDATE_MOBILENUMBER,
   REQUEST_ERROR,
 } from './constants';
 
@@ -23,13 +22,6 @@ export function changePassword(password) {
   return {
     type: USER_PASSWORD,
     password,
-  };
-}
-
-export function changeMobNumber(mobNumber) {
-  return {
-    type: UPDATE_MOBILENUMBER,
-    mobNumber,
   };
 }
 

@@ -10,16 +10,16 @@ const selectGlobal = state => state.get('global');
 const selectLogin = state => state.get('login', initialState);
 
 const makeSelectUsername = () =>
-  createSelector(selectLogin, registerState => registerState.get('username'));
+  createSelector(selectLogin, loginState => loginState.get('username'));
 
 const makeSelectPassword = () =>
-  createSelector(selectLogin, registerState => registerState.get('password'));
+  createSelector(selectLogin, loginState => loginState.get('password'));
 
 const makeLoginError = () =>
   createSelector(selectGlobal, global => global.get('loginError'));
 
 const makeSelectLoginData = () =>
-  createSelector(selectLogin, registerState => registerState.toJS());
+  createSelector(selectLogin, loginState => loginState.toJS());
 
 export {
   makeSelectUsername,

@@ -75,8 +75,8 @@ MinimalForm.propTypes = {
   onChangeUsername: PropTypes.func.isRequired,
   onChangePassword: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  username: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
+  username: PropTypes.string,
+  password: PropTypes.string,
   title: PropTypes.string,
   error: PropTypes.string,
 };

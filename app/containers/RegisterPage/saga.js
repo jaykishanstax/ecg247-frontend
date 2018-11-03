@@ -1,6 +1,7 @@
 import { call, put, select, takeLatest } from 'redux-saga/effects';
 
 import { doPost } from 'utils/request';
+import { push } from 'react-router-redux';
 import { makeSelectRegistrationData } from 'containers/RegisterPage/selectors';
 import { REGISTER_REQUEST } from './constants';
 import { requestError } from './actions';
@@ -10,9 +11,12 @@ export function* setRegisterData() {
   const requestURL = `/api/registration/`;
   try {
     const response = yield call(doPost, requestURL, data);
-    console.log(response);
-    if (response !== 'USER_CREATED') {
-      yield put(requestError(response));
+    if (response === 'user created') {
+      yield put(
+        push('/login', {
+          message: '*Account created successfully, Please login.',
+        }),
+      );
     }
   } catch (err) {
     yield put(requestError(err));

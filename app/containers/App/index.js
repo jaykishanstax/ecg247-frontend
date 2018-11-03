@@ -35,34 +35,27 @@ const AppWrapper = styled.div`
   background: white;
 `;
 
-// eslint-disable-next-line react/prefer-stateless-function
-export default class App extends React.PureComponent {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <AppWrapper>
-        <Helmet titleTemplate="ECG24*7" defaultTitle="ECG24*7">
-          <meta name="description" content="ECG24*7" />
-        </Helmet>
-        <Header isLoggedIn={authentication.isAuthenticated} {...this.props} />
-        <Switch>
-          <PublicRoute exact path="/" component={LoginPage} />
-          <PrivateRoute exact path="/home" component={HomePage} />
-          <PublicRoute exact path="/login" component={LoginPage} />
-          <PublicRoute exact path="/register" component={RegisterPage} />
-          <PrivateRoute path="/features" component={FeaturePage} />
-          <PrivateRoute path="/book-service" component={BookingPage} />
-          <PrivateRoute path="/logout" component={LogoutPage} />
-          <Route path="" component={NotFoundPage} />
-        </Switch>
-        {/* <Footer /> */}
-        <GlobalStyle />
-      </AppWrapper>
-    );
-  }
+export default function App() {
+  return (
+    <AppWrapper>
+      <Helmet titleTemplate="ECG24*7" defaultTitle="ECG24*7">
+        <meta name="description" content="ECG24*7" />
+      </Helmet>
+      <Header isLoggedIn={authentication.isAuthenticated} />
+      <Switch>
+        <PublicRoute exact path="/" component={LoginPage} />
+        <PrivateRoute exact path="/home" component={HomePage} />
+        <PublicRoute exact path="/login" component={LoginPage} />
+        <PublicRoute exact path="/register" component={RegisterPage} />
+        <PrivateRoute path="/features" component={FeaturePage} />
+        <PrivateRoute path="/book-service" component={BookingPage} />
+        <PrivateRoute path="/logout" component={LogoutPage} />
+        <Route path="" component={NotFoundPage} />
+      </Switch>
+      {/* <Footer /> */}
+      <GlobalStyle />
+    </AppWrapper>
+  );
 }
 
 export const authentication = {
