@@ -9,7 +9,11 @@ export function* setRegisterData() {
   const data = yield select(makeSelectRegistrationData());
   const requestURL = `/api/registration/`;
   try {
-    yield call(doPost, requestURL, data);
+    const response = yield call(doPost, requestURL, data);
+    console.log(response);
+    if (response !== 'USER_CREATED') {
+      yield put(requestError(response));
+    }
   } catch (err) {
     yield put(requestError(err));
   }
