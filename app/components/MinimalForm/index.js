@@ -8,7 +8,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import styled from 'styled-components';
-import MinimalButton from '../MinimalButton/index';
 
 const Form = styled.form`
   display: flex;
@@ -27,8 +26,9 @@ const TextField = styled.input`
   border-radius: 5px;
 `;
 
-const Error = styled.h4`
+const Error = styled.h6`
   color: #cc0000;
+  margin-top: 10px;
 `;
 
 function MinimalForm({

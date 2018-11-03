@@ -27,6 +27,7 @@ import {
   updateFullName,
   updateMobileNumber,
   updateLicenceNo,
+  updateUserRole,
   registerRequest,
 } from './actions';
 
@@ -39,12 +40,15 @@ export class RegisterPage extends React.PureComponent {
   render() {
     return (
       <div>
-        <Image src="http://hpservicecenterschennai.in/images/hp-printer-service-centers-chennai.JPG" />
+        <Image
+          src="http://hpservicecenterschennai.in/images/hp-printer-service-centers-chennai.JPG"
+          style={{ height: 'calc(100vh - 56px)' }}
+        />
         <div
           style={{
-            border: '1px solid lightgray',
-            padding: '100px 0px',
-            background: 'white',
+            borderLeft: '1px solid lightgray',
+            padding: '80px 0px',
+            background: '#F7F7F7',
             height: 'calc(100vh - 56px)',
             width: '500px',
             float: 'right',
@@ -75,6 +79,9 @@ export class RegisterPage extends React.PureComponent {
             onChangeLicenceNo={event =>
               this.props.dispatch(updateLicenceNo(event.target.value))
             }
+            onChangeUserRole={event =>
+              this.props.dispatch(updateUserRole(event.target.value))
+            }
             onSubmit={event => {
               event.preventDefault();
               this.props.dispatch(registerRequest());
@@ -84,6 +91,7 @@ export class RegisterPage extends React.PureComponent {
             password={this.props.password}
             mobileNumberPrimary={this.props.mobileNumberPrimary}
             licenceNo={this.props.licenceNo}
+            userRole={this.props.userRole}
             error={this.props.registerError}
             title="Register"
           />
@@ -100,6 +108,7 @@ RegisterPage.propTypes = {
   password: PropTypes.string.isRequired,
   mobileNumberPrimary: PropTypes.string.isRequired,
   licenceNo: PropTypes.string.isRequired,
+  userRole: PropTypes.string.isRequired,
   registerError: PropTypes.string.isRequired,
 };
 

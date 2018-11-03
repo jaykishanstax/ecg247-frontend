@@ -10,6 +10,7 @@ import {
   UPDATE_EMAIL,
   UPDATE_MOBILENUMBER,
   UPDATE_LICENCENUMBER,
+  UPDATE_USERROLE,
   REGISTER_REQUEST,
   REQUEST_ERROR,
   CLEAR_ERROR,
@@ -47,6 +48,13 @@ export function updateLicenceNo(licenceNo) {
   return {
     type: UPDATE_LICENCENUMBER,
     licenceNo,
+  };
+}
+
+export function updateUserRole(userRole) {
+  return {
+    type: UPDATE_USERROLE,
+    userRole,
   };
 }
 
